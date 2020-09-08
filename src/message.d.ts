@@ -1,4 +1,4 @@
-import Vue, { VNode } from "vue";
+import Vue, { VNode, PluginFunction } from "vue";
 
 export interface MessageOption {
   // 给组件应用 position: absolute
@@ -226,6 +226,7 @@ export type MessagePosition =
   | "topRight"
   | "bottomLeft"
   | "bottomRight";
+
 type MessageQueueItem = any[];
 
 export type MessageQueue = {
@@ -242,3 +243,10 @@ export interface MessageQueueManager {
   destroy(isCloseAll: boolean): void;
 }
 
+export interface NuxtMessageInit {
+  install: PluginFunction<InitOption>
+}
+
+export default NuxtMessageInit;
+
+declare const NuxtMessageInit: NuxtMessageInit;

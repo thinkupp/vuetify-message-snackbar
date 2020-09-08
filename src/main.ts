@@ -74,4 +74,6 @@ function init(Vue: VueConstructor, globalOptions?: types.InitOption): void {
   Vue.prototype.$message = message;
 }
 
-export default init;
+export default {
+  install: init
+};
