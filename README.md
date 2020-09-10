@@ -61,7 +61,12 @@ Vue.use(Message, {
 	offsetTop: 10,
 	autoTransitionSetting: true,
 	class: 'margin-top-animation',
-	// ...以及几乎所有的组件属性都可以在这里进行设置
+	// ...以及几乎所有的组件属性都可以在这里进行设置, 比如:
+	absolute: true,
+	dark: true,
+	width: 600,
+	height: 200,
+	transition: 'scroll-x-transition',
 })
 ```
 
@@ -178,7 +183,7 @@ this.$message.closeAll();
 
 - `$message | $message.success | $message.info | $message.warning | $message.error | $message.show`
 	- 描述：创建消息条
-	- 返回值：`{ close(): void, again(): void }`
+	- 返回值：`{ close(): void, again(): { close() => void } }`
 
 - `close`
 	- 描述：隐藏创建的消息条

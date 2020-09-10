@@ -65,7 +65,7 @@ export function isVNode(value: any): value is VNode {
 }
 
 function getAllTransitionTypes() {
-  let values = ["fab", "fade", "scale"];
+  const values = ["fab", "fade", "scale"];
   const spec = ["scroll", "slide"];
 
   spec.forEach((val) => {
