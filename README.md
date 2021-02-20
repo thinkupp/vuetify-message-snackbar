@@ -1,11 +1,14 @@
 ## Vuetify Message Snackbar
-> Vuetify Snackbar 的样式和功能都很有特点，但美中不足，没有提供函数式调用的能力。
-
-> 习惯 ElementUI 函数式唤起消息条的人可能不会再想笨重的写 DOM，再通过数据驱动控制消息条的显隐，麻烦，影响开发效率。
-
-> 所以本插件参考了 ElementUI Message 的调用方式对 v-snackbar 进行了封装与扩展，并提供了便捷的函数式配置能力。
 
 > 开发插件时`vuetify`的版本号是`2.3.10`，支持`Nuxt`
+
+Vuetify Snackbar 的样式和功能都很有特点，但美中不足，没有提供函数式调用的能力。
+
+习惯 ElementUI 函数式唤起消息条的人可能不会再想笨重的写 DOM，再通过数据驱动控制消息条的显隐，麻烦，影响开发效率。
+
+所以本插件参考了 ElementUI Message 的调用方式对 v-snackbar 进行了封装与扩展，并提供了便捷的函数式配置能力。
+
+[在线预览效果] (https://thinkupp.github.io/#/vuetify/message)
 
 ### 特点
 
