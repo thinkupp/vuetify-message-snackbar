@@ -5,14 +5,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
-  entry: process.env.NODE_ENV === 'production' ? './src/main.ts' : "./dev/index.ts",
+  entry:
+    process.env.NODE_ENV === "production" ? "./src/main.ts" : "./dev/index.ts",
 
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path:
+      process.env.NODE_ENV === "production"
+        ? path.resolve(__dirname, "dist")
+        : path.resolve(__dirname, "demo"),
     filename: "vuetify-message-snackbar.js",
-    library: 'vuetifyMessageSnackbar',
-    libraryTarget: 'umd',
-    globalObject: 'this'
+    library: "vuetifyMessageSnackbar",
+    libraryTarget: "umd",
   },
 
   resolve: {
@@ -68,13 +71,24 @@ module.exports = {
       },
     ],
   },
+
   plugins: [new VueLoaderPlugin()],
 
   mode: process.env.NODE_ENV || "development",
 
   externals: {
-    vuetify: "Vuetify",
-    vue: "Vue"
+    vue: {
+      root: "Vue",
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue"
+    },
+    vuetify: {
+      root: "Vuetify",
+      commonjs: "vuetify",
+      commonjs2: "vuetify",
+      amd: "vue"
+    }
   }
 };
 
