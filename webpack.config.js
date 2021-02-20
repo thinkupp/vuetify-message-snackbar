@@ -14,7 +14,7 @@ module.exports = {
         ? path.resolve(__dirname, "dist")
         : path.resolve(__dirname, "demo"),
     filename: "vuetify-message-snackbar.js",
-    library: "vuetifyMessageSnackbar",
+    library: "VuetifyMessageSnackbar",
     libraryTarget: "umd",
   },
 
