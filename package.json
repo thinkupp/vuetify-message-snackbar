@@ -8,7 +8,7 @@
   "types": "src/message.d.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --hot --port 8080",
+    "dev": "NODE_ENV=development webpack-dev-server --hot --port 3060",
     "build": "NODE_ENV=production webpack"
   },
   "devDependencies": {

@@ -71,14 +71,14 @@ module.exports = {
   plugins: [new VueLoaderPlugin()],
 
   mode: process.env.NODE_ENV || "development",
+
+  externals: {
+    vuetify: "Vuetify",
+    vue: "Vue"
+  }
 };
 
-if (process.env.NODE_ENV === "production") {
-  module.exports.externals = {
-    vuetify: 'vuetify',
-    vue: 'vue'
-  }
-} else {
+if (process.env.NODE_ENV !== "production") {
   module.exports.plugins.push(
     new HtmlWebpackPlugin({
       filename: "index.html",
