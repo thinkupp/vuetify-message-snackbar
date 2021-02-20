@@ -1,5 +1,7 @@
 import * as types from "./message";
 
+let pElement: Element = document.documentElement;
+
 export default class MessageQueueManager implements types.MessageQueueManager {
   static DEFAULT_OFFSET_TOP = 20;
 
@@ -9,22 +11,25 @@ export default class MessageQueueManager implements types.MessageQueueManager {
     topRight: [],
     bottom: [],
     bottomLeft: [],
-    bottomRight: []
+    bottomRight: [],
   };
 
   static closeAll() {
-    const keys: types.MessagePosition[] = Object.keys(MessageQueueManager.messageQueue) as types.MessagePosition[];
+    const keys: types.MessagePosition[] = Object.keys(
+      MessageQueueManager.messageQueue
+    ) as types.MessagePosition[];
     keys.forEach((key: types.MessagePosition) => {
       MessageQueueManager.messageQueue[key].forEach((instance: any) => {
         instance.close(true);
-      })
-    })
+      });
+    });
   }
 
   instance: any;
   messageConfig: types.MessageOption;
-  element: HTMLElement | Element = document.documentElement;
+  element: HTMLElement | Element = pElement;
   isCloseAll: boolean = false;
+
   appendTo?: string | Element;
 
   constructor(instance: any, appendTo?: string | Element) {
@@ -65,7 +70,8 @@ export default class MessageQueueManager implements types.MessageQueueManager {
         $el.style.marginTop = _height + "px";
       }
 
-      height += $child.offsetHeight + (queue[i].messageConfig.offsetTop as number);
+      height +=
+        $child.offsetHeight + (queue[i].messageConfig.offsetTop as number);
     }
   }
 
@@ -77,7 +83,8 @@ export default class MessageQueueManager implements types.MessageQueueManager {
     const queue = this.getQueue();
 
     queue.forEach((item: any) => {
-      marginTop += item.$el.firstElementChild.offsetHeight + item.messageConfig.offsetTop;
+      marginTop +=
+        item.$el.firstElementChild.offsetHeight + item.messageConfig.offsetTop;
     });
 
     if (!this.messageInTop()) {
@@ -93,6 +100,7 @@ export default class MessageQueueManager implements types.MessageQueueManager {
 
   private append() {
     this.setAppendToElement();
+    console.log('element', this.element);
     this.element.appendChild(this.instance.$el);
   }
 
@@ -126,9 +134,13 @@ export default class MessageQueueManager implements types.MessageQueueManager {
     const { offsetTop } = this.messageConfig;
     let _offsetTop = offsetTop;
 
-    if (offsetTop === void 0 || offsetTop === null || isNaN(Number(offsetTop))) {
+    if (
+      offsetTop === void 0 ||
+      offsetTop === null ||
+      isNaN(Number(offsetTop))
+    ) {
       _offsetTop = MessageQueueManager.DEFAULT_OFFSET_TOP;
-    } else if (typeof offsetTop !== 'number') {
+    } else if (typeof offsetTop !== "number") {
       _offsetTop = Number(offsetTop);
     }
 
@@ -140,16 +152,25 @@ export default class MessageQueueManager implements types.MessageQueueManager {
   }
 
   private setAppendToElement() {
+    if (
+      pElement !== document.documentElement &&
+      pElement !== document.body &&
+      document.documentElement.contains(pElement)
+    ) {
+      return;
+    }
     let dom;
     const appendTo = this.appendTo;
     if (appendTo instanceof Element) {
       dom = appendTo;
-    } else if (typeof appendTo === 'string') {
+    } else if (typeof appendTo === "string") {
       const _dom = document.querySelector(appendTo);
       if (_dom) dom = _dom;
     } else {
-      dom = document.querySelector('.v-application') || document.querySelector('#app') || document.body;
+      dom = document.querySelector("#app.v-application") || document.body;
     }
-    if (dom) this.element = dom;
+    if (dom) {
+      this.element = pElement = dom;
+    }
   }
 }
