@@ -1,6 +1,6 @@
 {
   "name": "vuetify-message-snackbar",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "函数式使用 vuetify-snackbar，使用Typescript，链式调用增强体验",
   "main": "dist/vuetify-message-snackbar.js",
   "repository": "https://github.com/thinkupp/vuetify-message-snackbar.git",
