@@ -86,5 +86,9 @@ export default class App extends Vue {
       }, 1000)
     }, 2000);
   }
+
+  private created() {
+    this.$message.success("Start~");
+  }
 }
 </script>

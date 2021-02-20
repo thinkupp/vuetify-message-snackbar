@@ -10,7 +10,9 @@
   "keywords": [
     "vuetify-message",
     "vuetify-snackbar",
-    "vuetify-message-snackbar"
+    "vuetify-message-snackbar",
+    "vuetify",
+    "vuetify-notify"
   ],
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --hot --port 3060",
