@@ -8,7 +8,7 @@ Vuetify Snackbar 的样式和功能都很有特点，但美中不足，没有提
 
 所以本插件参考了 ElementUI Message 的调用方式对 v-snackbar 进行了封装与扩展，并提供了便捷的函数式配置能力。
 
-[在线预览效果](https://thinkupp.github.io/#/vuetify/message)
+[在线预览效果](https://thinkupp.github.io/demo/#/vuetify/message)
 
 ### 特点
 
@@ -32,6 +32,18 @@ import Vue from 'vue'
 import message from 'vuetify-message-snackbar';
 
 Vue.use(message[, option]);
+```
+
+##### CDN
+
+> 下方链接仅供参考
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vuetify-message-snackbar"></script>
+
+<script>
+	Vue.use(VuetifyMessageSnackbar[, option]);
+</script>
 ```
 
 ##### Nuxt
