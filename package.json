@@ -1,6 +1,6 @@
 {
   "name": "vuetify-message-snackbar",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "函数式使用 vuetify-snackbar，使用Typescript，链式调用增强体验",
   "main": "dist/vuetify-message-snackbar.js",
   "repository": "https://github.com/thinkupp/vuetify-message-snackbar.git",
@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --hot --port 3060",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "build:t": "NODE_ENV=development webpack"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
