@@ -21,7 +21,7 @@ export class DefaultMessageOption implements types.MessageOption {
   // 隐藏后从树中移除
   autoRemove: boolean = true;
   // 取消按钮文案
-  closeButtonContent: string = "CLOSE";
+  closeButtonContent: string = "";
   // 间距
   offsetTop: number = 10;
 }

@@ -295,7 +295,7 @@ this.$message.top().closeButton('关闭').absolute().elevation(10).success('cust
 |参数名|类型|默认值|描述|
 |:--:|:--:|:--:|:--:
 |`autoRemove`|boolean|`true`|消息条隐藏后是否从树中移除
-|`closeButtonContent`|string \| VNode|`CLOSE`|消息条取消按钮的文案
+|`closeButtonContent`|string \| VNode|`""`|消息条取消按钮的文案
 |`offsetTop`|number|`10`|消息条与消息条之间的间隔
 |`class`|string \| string[]|`undefined`|每个消息条的类名，传空字符串或空数组可覆盖默认的`margin-top-animation`
 |`autoTransitionSetting`|boolean|`true`|未手动设置过渡动画时，是否自动根据对应位置设置不同效果的过渡动画
