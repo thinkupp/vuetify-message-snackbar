@@ -139,7 +139,7 @@ this.$message.topRight().light(false).success('light');	// 设置非浅色的主
 
 0.2.3 版本预设了`success/info/warning/error`的字体图标
 
-如果传入`string`，那将会转换成`<v-icon left>mdi-xxx</v-icon>`的结构，所以请确保传入的参数可以被`v-icon`正确的解析）
+如果传入`string`，比如`mdi-domain`，那将会转换成`<v-icon left>mdi-domain</v-icon>`的结构，所以请确保传入的参数可以被`v-icon`正确的解析）
 
 通过`Vue.use`或者`this.$message.messageIcon`传参可覆盖
 
