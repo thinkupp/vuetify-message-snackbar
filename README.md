@@ -131,6 +131,7 @@ this.$message.top().timeout(-1).info('timeout');	// 设置自动隐藏时间
 ```js
 this.$message.topRight().light().success('light');	// 设置为浅色的主题
 this.$message.topRight().light(true).success('light');	// 与上面的那句等价
+
 this.$message.topRight().light(false).success('light');	// 设置非浅色的主题
 ```
 
@@ -138,7 +139,11 @@ this.$message.topRight().light(false).success('light');	// 设置非浅色的主
 
 0.2.3 版本预设了`success/info/warning/error`的字体图标
 
+如果传入`string`，那将会转换成`<v-icon left>mdi-xxx</v-icon>`的结构，所以请确保传入的参数可以被`v-icon`正确的解析）
+
 通过`Vue.use`或者`this.$message.messageIcon`传参可覆盖
+
+*当`message`为`VNode`类型时，该功能失效*
 
 ```js
 this.$message.messageIcon("mdi-domain").success("自定义Icon"); // string
