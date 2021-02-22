@@ -1,6 +1,6 @@
 import Vue, { CreateElement } from "vue";
 import * as types from "./message";
-import { isVNode, componentProps } from "./util";
+import { isVNode, componentProps, getMessageIcon } from "./util";
 import MessageQueueManager from "./manager";
 import Vuetify from "vuetify";
 
@@ -23,8 +23,8 @@ function createComponent(messageConfig: types.MessageOption) {
       },
 
       getChildren(createElement: CreateElement) {
-        const { message, closeButtonContent } = messageConfig;
-        const children = [this.getMessage(message)];
+        const { closeButtonContent } = messageConfig;
+        const children = this.getMessage(createElement);
 
         if (closeButtonContent) {
           children.push(this.getCloseButton(createElement, closeButtonContent));
@@ -33,8 +33,30 @@ function createComponent(messageConfig: types.MessageOption) {
         return children;
       },
 
-      getMessage(message?: types.MessageType) {
-        return message;
+      getMessage(createElement: CreateElement) {
+        const { message } = messageConfig;
+        if (isVNode(message)) {
+          return [message];
+        }
+
+        const { color, messageIcon } = messageConfig;
+        let icon = getMessageIcon(color, messageIcon);
+        if (icon) {
+          if (!isVNode(icon)) {
+            icon = createElement("v-icon", {
+              props: {
+                left: true,
+              }
+            },[icon])
+          }
+
+          return [
+            icon,
+            message,
+          ];
+        }
+
+        return [message];
       },
 
       getCloseButton(createElement: CreateElement, content: types.MessageType) {

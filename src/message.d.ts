@@ -97,6 +97,8 @@ export interface MessageOption {
   /* 自定义扩展属性 */
   message?: string | VNode;
 
+  messageIcon?: string | VNode;
+
   // 隐藏后是否从页面中移除此元素
   // default: false
   autoRemove?: boolean;

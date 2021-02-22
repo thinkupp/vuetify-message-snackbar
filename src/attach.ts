@@ -1,3 +1,4 @@
+import { VNode } from "vue";
 import * as types from "./message";
 import { getTransition } from "./util";
 
@@ -220,6 +221,11 @@ export default class OptionHandle implements types.MessageOptionHandle {
 
   public read(name: string) {
     this.option = this.pool[name];
+    return this;
+  }
+
+  public messageIcon(icon: string | VNode) {
+    this.option.messageIcon = icon || '';
     return this;
   }
 

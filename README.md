@@ -134,6 +134,23 @@ this.$message.topRight().light(true).success('light');	// 与上面的那句等�
 this.$message.topRight().light(false).success('light');	// 设置非浅色的主题
 ```
 
+##### 消息条ICON
+
+0.2.3 版本预设了`success/info/warning/error`的字体图标
+
+通过`Vue.use`或者`this.$message.messageIcon`传参可覆盖
+
+```js
+this.$message.messageIcon("mdi-domain").success("自定义Icon"); // string
+this.$message.messageIcon(this.$createElement("v-icon", {
+	props: {
+		small: true,
+	}
+}, ["mdi-domain"])).success("自定义Icon"); // VNode
+
+this.$message.messageIcon().success("Hide Icon"); // 隐藏预设的icon
+```
+
 ##### 配置链式调用
 
 > 相同配置以最后一次执行的值为准
@@ -278,13 +295,13 @@ this.$message.top().closeButton('关闭').absolute().elevation(10).success('cust
 |参数名|类型|默认值|描述|
 |:--:|:--:|:--:|:--:
 |`autoRemove`|boolean|`true`|消息条隐藏后是否从树中移除
-|`closeButtonContent`|string \| vnode|`CLOSE`|消息条取消按钮的文案
+|`closeButtonContent`|string \| VNode|`CLOSE`|消息条取消按钮的文案
 |`offsetTop`|number|`10`|消息条与消息条之间的间隔
 |`class`|string \| string[]|`undefined`|每个消息条的类名，传空字符串或空数组可覆盖默认的`margin-top-animation`
 |`autoTransitionSetting`|boolean|`true`|未手动设置过渡动画时，是否自动根据对应位置设置不同效果的过渡动画
-|`message`|string \| vnode|`undefined`|消息条内容(`Vue.use`时设置此值可作为消息条内容的默认值)
+|`message`|string \| VNode|`undefined`|消息条内容(`Vue.use`时设置此值可作为消息条内容的默认值)
 |`appendTo`|string \| Element|`undefined`|指定消息条渲染在哪个节点下，默认会选择`.v-application/#app/body`，如果都获取不到则会放到根节点下（没有渲染在`v-app`组件下会影响部分样式）
-
+|`messageIcon`|string \| VNode|`undefined`|指定消息条内容的字体图标（0.2.3新增）
 
 > 函数式配置具体都能配置哪些参数，可以去看官方文档该组件的参数：https://vuetifyjs.com/zh-Hans/components/snackbars/
 

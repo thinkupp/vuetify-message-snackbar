@@ -1,5 +1,15 @@
 import * as types from "./message";
+
 import { VNode } from "vue";
+
+const presetIcon: {
+  [key: string]: string;
+} = {
+  success: "mdi-checkbox-marked-circle",
+  warning: "mdi-alert-circle",
+  info: "mdi-information",
+  error: "mdi-close-circle",
+}
 
 export class DefaultMessageOption implements types.MessageOption {
   top: boolean = true;
@@ -97,4 +107,16 @@ export function appendCss() {
   const style = document.createElement('style');
   style.innerText = '.margin-top-animation { transition: top .15s linear }'
   document.head.appendChild(style);
+}
+
+export function getMessageIcon(color?: string, icon?: string | VNode) {
+  if (icon) return icon;
+
+  if (icon === '') {
+    // 表示用户不希望使用字体图标
+    return void 0;
+  }
+
+  color = (color || '').toLowerCase();
+  return presetIcon[color];
 }
