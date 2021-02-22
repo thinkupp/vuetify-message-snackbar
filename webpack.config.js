@@ -87,7 +87,7 @@ module.exports = {
       root: "Vuetify",
       commonjs: "vuetify",
       commonjs2: "vuetify",
-      amd: "vue"
+      amd: "vuetify"
     }
   }
 };
