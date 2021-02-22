@@ -67,7 +67,7 @@ export default class MessageQueueManager implements types.MessageQueueManager {
           _height = -height;
         }
 
-        $el.style.marginTop = _height + "px";
+        $el.style.top = _height + "px";
       }
       height +=
         $child.offsetHeight + (queue[i].messageConfig.offsetTop as number);
@@ -90,7 +90,7 @@ export default class MessageQueueManager implements types.MessageQueueManager {
       marginTop = -marginTop;
     }
 
-    instance.$el.style.marginTop = marginTop + "px";
+    instance.$el.style.top = marginTop + "px";
 
     this.append();
 

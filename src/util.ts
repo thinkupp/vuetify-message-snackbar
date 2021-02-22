@@ -95,6 +95,6 @@ export function getTransition(index?: number) {
 
 export function appendCss() {
   const style = document.createElement('style');
-  style.innerText = '.margin-top-animation { transition: margin-top .15s linear }'
+  style.innerText = '.margin-top-animation { transition: top .15s linear }'
   document.head.appendChild(style);
 }
