@@ -34,6 +34,26 @@ import message from 'vuetify-message-snackbar';
 Vue.use(message[, option]);
 ```
 
+- option
+
+> `Vue.use` 时的`option`请参考下方的配置项说明，可不传
+
+```js
+Vue.use(Message, {
+	autoRemove: false,
+	closeButtonContent: 'CLOSE',
+	offsetTop: 10,
+	autoTransitionSetting: true,
+	class: 'margin-top-animation',
+	// ...以及几乎所有的组件属性都可以在这里进行设置, 比如:
+	absolute: true,
+	dark: true,
+	width: 600,
+	height: 200,
+	transition: 'scroll-x-transition',
+})
+
+```
 ##### CDN
 
 > 下方链接仅供参考
@@ -65,24 +85,24 @@ plugins: [
 ]
 ```
 
-- option
+### 组件需知
 
-> `Vue.use` 时的`option`请参考下方的配置项说明，可不传
+如果你是以按需加载的方式加载的`Vuetify`，请确保以下组件已经被注册：
+
+- `v-snackbar`
+- `v-icon`
+- `v-btn`
+
+参考下方示例代码：
 
 ```js
-Vue.use(Message, {
-	autoRemove: false,
-	closeButtonContent: 'CLOSE',
-	offsetTop: 10,
-	autoTransitionSetting: true,
-	class: 'margin-top-animation',
-	// ...以及几乎所有的组件属性都可以在这里进行设置, 比如:
-	absolute: true,
-	dark: true,
-	width: 600,
-	height: 200,
-	transition: 'scroll-x-transition',
-})
+import Vuetify, { VSnackbar, VBtn, VIcon } from “vuetify/lib”;
+
+Vue.use(Vuetify);
+
+Vue.component("v-snackbar", VSnackbar);
+Vue.component("v-btn", VBtn);
+Vue.component("v-icon", VIcon);
 ```
 
 ### 使用
