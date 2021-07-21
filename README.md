@@ -140,8 +140,8 @@ this.$message.bottomLeft().success('bottomLeft'); // 下左
 
 ##### 在JS/TS文件中使用
 ```js
-import { notify } from "vuetify-message-snackbar";
-notify.success('use in js');
+import { Notify } from "vuetify-message-snackbar";
+Notify.success('use in js');
 ```
 
 - 函数式配置

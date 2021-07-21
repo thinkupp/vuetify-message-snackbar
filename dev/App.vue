@@ -54,7 +54,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { notify } from "../src/main";
+import { Notify } from "../src/main";
 
 @Component
 export default class App extends Vue {
@@ -99,7 +99,7 @@ export default class App extends Vue {
   }
 
   private useInJs() {
-    notify.success(" 通过import { notify } from 'vuetify-message-snackbar' 即可调用");
+    Notify.success(" 通过import { Notify } from 'vuetify-message-snackbar' 即可调用");
   }
 }
 </script>
