@@ -258,3 +258,5 @@ export interface NuxtMessageInit {
 export default NuxtMessageInit;
 
 declare const NuxtMessageInit: NuxtMessageInit;
+
+export const Notify: message;
