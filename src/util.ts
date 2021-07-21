@@ -109,7 +109,7 @@ export function appendCss() {
   document.head.appendChild(style);
 }
 
-export function getMessageIcon(color?: string, icon?: string | VNode) {
+export function getMessageIcon(color?: string, icon?: string | VNode, customPresetIcon?: types.PresetIcon) {
   if (icon) return icon;
 
   if (icon === '') {
@@ -118,5 +118,5 @@ export function getMessageIcon(color?: string, icon?: string | VNode) {
   }
 
   color = (color || '').toLowerCase();
-  return presetIcon[color];
+  return (customPresetIcon || {})[color] || presetIcon[color];
 }

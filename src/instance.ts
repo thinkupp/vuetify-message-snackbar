@@ -4,13 +4,16 @@ import { isVNode, componentProps, getMessageIcon } from "./util";
 import MessageQueueManager from "./manager";
 import Vuetify from "vuetify";
 
-function createComponent(messageConfig: types.MessageOption) {
+function createComponent(
+  messageConfig: types.MessageOption,
+  presetIcon?: types.PresetIcon
+) {
   return Vue.extend({
     data() {
       (this as any).messageConfig = messageConfig;
       return {
         value: false,
-        isCloseAll: false
+        isCloseAll: false,
       };
     },
 
@@ -19,7 +22,7 @@ function createComponent(messageConfig: types.MessageOption) {
     methods: {
       close(isCloseAll?: boolean) {
         this.value = false;
-        this.isCloseAll = typeof isCloseAll === 'boolean' ? isCloseAll : false;
+        this.isCloseAll = typeof isCloseAll === "boolean" ? isCloseAll : false;
       },
 
       getChildren(createElement: CreateElement) {
@@ -40,20 +43,21 @@ function createComponent(messageConfig: types.MessageOption) {
         }
 
         const { color, messageIcon } = messageConfig;
-        let icon = getMessageIcon(color, messageIcon);
+        let icon = getMessageIcon(color, messageIcon, presetIcon);
         if (icon) {
           if (!isVNode(icon)) {
-            icon = createElement("v-icon", {
-              props: {
-                left: true,
-              }
-            },[icon])
+            icon = createElement(
+              "v-icon",
+              {
+                props: {
+                  left: true,
+                },
+              },
+              [icon]
+            );
           }
 
-          return [
-            icon,
-            message,
-          ];
+          return [icon, message];
         }
 
         return [message];
@@ -78,7 +82,7 @@ function createComponent(messageConfig: types.MessageOption) {
                 text: true,
               },
               on: {
-                click: that.close
+                click: that.close,
               },
               slot: "action",
             },
@@ -149,13 +153,17 @@ function createComponent(messageConfig: types.MessageOption) {
   });
 }
 
-export default function createInstance(messageConfig: types.MessageOption, appendTo?: string | Element) {
-  const instance = new (createComponent(messageConfig))();
+export default function createInstance(
+  messageConfig: types.MessageOption,
+  appendTo?: string | Element,
+  presetIcon?: types.PresetIcon
+) {
+  const instance = new (createComponent(messageConfig, presetIcon))();
 
   const mqm = new MessageQueueManager(instance, appendTo);
   instance.$on("closed", function() {
     mqm.destroy();
   });
-  
+
   return instance;
 }

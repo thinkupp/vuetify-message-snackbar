@@ -38,13 +38,13 @@ function init(Vue: VueConstructor, globalOptions?: types.InitOption): void {
     }
 
     const messageConfig = getMessageConfig();
-    const instance = createInstance(messageConfig, globalOptions!.appendTo);
+    const instance = createInstance(messageConfig, globalOptions!.appendTo, globalOptions?.presetIcon);
 
     return {
       close: instance.close,
       again: () => {
         return {
-          close: createInstance(messageConfig, globalOptions!.appendTo).close,
+          close: createInstance(messageConfig, globalOptions!.appendTo, globalOptions?.presetIcon).close,
         };
       },
     };

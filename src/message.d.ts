@@ -116,9 +116,15 @@ export interface MessageOption {
   autoTransitionSetting?: boolean;
 }
 
+export interface PresetIcon {
+  [messageType: string]: string;
+}
+
 export interface InitOption extends MessageOption {
   // 在哪个DOM中渲染消息条
   appendTo?: string | Element;
+  // 预设icon
+  presetIcon?: PresetIcon;
 }
 
 export type CustomParameter = 'message' | 'autoRemove' | 'closeButtonContent' | 'appendTo' | 'offsetTop' | 'class' | 'autoTransitionSetting';
