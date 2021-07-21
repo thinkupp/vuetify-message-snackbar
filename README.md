@@ -330,7 +330,7 @@ this.$message.top().closeButton('关闭').absolute().elevation(10).success('cust
 |参数名|类型|默认值|描述|
 |:--:|:--:|:--:|:--:
 |`appendTo`|string \| Element|`undefined`|指定消息条渲染在哪个节点下，默认会选择`.v-application/#app/body`，如果都获取不到则会放到根节点下（没有渲染在`v-app`组件下会影响部分样式）
-|`presetIcon`|{[messageType: string]: string}|`undefined`|预设icon
+|`presetIcon`|{[messageType: string]: string}|`undefined`|预设icon (0.2.4新增)
 
 - `Vue.use`时与`$message(option)`时都支持
 
