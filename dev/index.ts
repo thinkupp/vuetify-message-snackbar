@@ -7,7 +7,10 @@ import Message from '../src/main';
 
 Vue.use(Vuetify);
 Vue.use(Message, {
-  appendTo: '.v-application--wrap'
+  appendTo: '.v-application--wrap',
+  presetIcon: {
+    success: "mdi-close-circle"
+  }
 });
 
 new Vue({

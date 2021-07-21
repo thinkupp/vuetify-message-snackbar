@@ -8,6 +8,9 @@
       <v-btn @click="$message.error('这是一条错误消息')">error</v-btn>
       <v-btn @click="$message.show('这是一条默认消息')">show</v-btn>
 
+      <v-subheader>在JS/TS文件中使用</v-subheader>
+      <v-btn @click="useInJs">在JS/TS文件中使用</v-btn>
+
       <v-subheader>自定义方向</v-subheader>
       <v-btn @click="$message.topLeft().info('topLeft')">上左</v-btn>
       <v-btn @click="$message.top().info('top')">上中</v-btn>
@@ -51,6 +54,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import { notify } from "../src/main";
 
 @Component
 export default class App extends Vue {
@@ -92,6 +96,10 @@ export default class App extends Vue {
 
   private created() {
     this.$message.success("Start~");
+  }
+
+  private useInJs() {
+    notify.success(" 通过import { notify } from 'vuetify-message-snackbar' 即可调用");
   }
 }
 </script>
