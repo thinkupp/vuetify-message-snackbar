@@ -138,6 +138,12 @@ this.$message.bottomLeft().success('bottomLeft'); // 下左
 // (top/topLeft/topRight/bottom/bottomLeft/bottomRight) 共六个方向
 ```
 
+##### 在JS/TS文件中使用
+```js
+import { notify } from "vuetify-message-snackbar";
+notify.success('use in js');
+```
+
 - 函数式配置
 
 #####  通过函数可以设置绝大部分属性
