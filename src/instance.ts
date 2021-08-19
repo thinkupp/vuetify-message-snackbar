@@ -2,8 +2,6 @@ import Vue, { CreateElement } from "vue";
 import * as types from "./message";
 import { isVNode, componentProps, getMessageIcon } from "./util";
 import MessageQueueManager from "./manager";
-import Vuetify from "vuetify";
-
 function createComponent(
   messageConfig: types.MessageOption,
   presetIcon?: types.PresetIcon
@@ -16,9 +14,8 @@ function createComponent(
         isCloseAll: false,
       };
     },
-
-    vuetify: new Vuetify(),
-
+    vuetify: messageConfig.vuetify,
+    
     methods: {
       close(isCloseAll?: boolean) {
         this.value = false;
@@ -159,7 +156,6 @@ export default function createInstance(
   presetIcon?: types.PresetIcon
 ) {
   const instance = new (createComponent(messageConfig, presetIcon))();
-
   const mqm = new MessageQueueManager(instance, appendTo);
   instance.$on("closed", function() {
     mqm.destroy();
