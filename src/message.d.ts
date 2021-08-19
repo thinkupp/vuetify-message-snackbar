@@ -116,7 +116,7 @@ export interface MessageOption {
   autoTransitionSetting?: boolean;
 
   // 传递vuetify参数
-  vuetify?: any;
+  options?: any;
 }
 
 export interface PresetIcon {
@@ -130,7 +130,7 @@ export interface InitOption extends MessageOption {
   presetIcon?: PresetIcon;
 }
 
-export type CustomParameter = 'message' | 'autoRemove' | 'closeButtonContent' | 'appendTo' | 'offsetTop' | 'class' | 'autoTransitionSetting' | 'vuetify';
+export type CustomParameter = 'message' | 'autoRemove' | 'closeButtonContent' | 'appendTo' | 'offsetTop' | 'class' | 'autoTransitionSetting' | 'options';
 
 export type MessageType = string | VNode;
 interface BaseMessage {
