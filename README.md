@@ -57,7 +57,6 @@ Vue.use(Message, {
 	transition: 'scroll-x-transition',
 	// 使用自定义vuetify配置(自行修改vuetify插件将opt作为对象属性导出)
 	options: vuetify.options
-	appendTo: '.v-application--wrap',
 })
 
 ```
