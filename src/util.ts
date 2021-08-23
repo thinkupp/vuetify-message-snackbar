@@ -1,6 +1,7 @@
 import * as types from "./message";
 
 import { VNode } from "vue";
+import Vuetify from "vuetify";
 
 const presetIcon: {
   [key: string]: string;
@@ -119,4 +120,10 @@ export function getMessageIcon(color?: string, icon?: string | VNode, customPres
 
   color = (color || '').toLowerCase();
   return (customPresetIcon || {})[color] || presetIcon[color];
+}
+
+let vuetifyInstance: Vuetify;
+export function getVuetifyInstance(vuetifyPreset: any) {
+  if (vuetifyInstance) return vuetifyInstance;
+  return vuetifyInstance = new Vuetify(vuetifyPreset);
 }

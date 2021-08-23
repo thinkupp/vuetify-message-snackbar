@@ -1,8 +1,7 @@
 import Vue, { CreateElement } from "vue";
 import * as types from "./message";
-import { isVNode, componentProps, getMessageIcon } from "./util";
+import { isVNode, componentProps, getMessageIcon, getVuetifyInstance } from "./util";
 import MessageQueueManager from "./manager";
-import Vuetify from "vuetify";
 
 function createComponent(
   messageConfig: types.MessageOption,
@@ -17,7 +16,7 @@ function createComponent(
       };
     },
 
-    vuetify: new Vuetify(messageConfig.options),
+    vuetify: getVuetifyInstance(messageConfig.options),
     methods: {
       close(isCloseAll?: boolean) {
         this.value = false;
