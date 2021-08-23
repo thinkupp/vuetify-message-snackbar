@@ -1,7 +1,7 @@
 import * as types from "./message";
 import createInstance from "./instance";
 
-import { getOption, DefaultMessageOption, appendCss } from "./util";
+import { getOption, DefaultMessageOption, appendCss, getVuetifyInstance } from "./util";
 import MessageQueueManager from "./manager";
 import OptionHandle from "./attach";
 
@@ -79,6 +79,8 @@ export default () => {
 
 export const setGlobalOptions = (options: types.InitOption) => {
   globalOptions = options;
+  getVuetifyInstance(options.vuetifyInstance, options.vuetifyPreset);
+  console.log("UseOptions", options);
   setMessagePrototype();
 };
 

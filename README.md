@@ -39,6 +39,9 @@ Vue.use(message[, option]);
 > `Vue.use` 时的`option`请参考下方的配置项说明，可不传
 
 ```js
+const vuetifyPreset = {};
+const vuetify = new Vuetify(vuetifyPreset);
+
 Vue.use(Message, {
 	autoRemove: true,
 	closeButtonContent: 'CLOSE',
@@ -49,15 +52,27 @@ Vue.use(Message, {
 	presetIcon: {
 		success: 'mdi-checkbox-marked-circle'
 	},
+	// 传入实例可以确保snackbar的样式表现统一
+	// 保持和初始化vue时传入的实例统一
+	vuetifyInstance: vuetify,
+	// 初始化时拿不到vuetify的实例，可以配置传参
+	// 但是这种方式在一定情况下表现可能还是有差异，不过可以通过动态设置实例解决
+	// 具体请参考下方的说明 (#样式表现不一致的问题)
+	vuetifyPreset,
 	// ...以及几乎所有的组件属性都可以在这里进行设置, 比如:
 	absolute: true,
 	dark: true,
 	width: 600,
 	height: 200,
 	transition: 'scroll-x-transition',
-	// 使用自定义vuetify配置(自行修改vuetify插件将opt作为对象属性导出)
-	options: vuetify.options
 })
+
+new Vue({
+  el: '#app',
+  render: (h) => h(App),
+  vuetify,
+})
+
 
 ```
 ##### CDN
@@ -285,7 +300,6 @@ this.$message.top().closeButton('关闭').absolute().elevation(10).success('cust
 this.$message.top().closeButton('关闭').absolute().elevation(10).success('custom1');
 ```
 
-
 ### 说明
 
 ##### 自动设置过渡动画
@@ -333,6 +347,8 @@ this.$message.top().closeButton('关闭').absolute().elevation(10).success('cust
 |:--:|:--:|:--:|:--:
 |`appendTo`|string \| Element|`undefined`|指定消息条渲染在哪个节点下，默认会选择`.v-application/#app/body`，如果都获取不到则会放到根节点下（没有渲染在`v-app`组件下会影响部分样式）
 |`presetIcon`|{[messageType: string]: string}|`undefined`|预设icon (0.2.4新增)
+|`vuetifyInstance`|Vuetify
+|`vuetifyPreset`|VuetifyPreset
 
 - `Vue.use`时与`$message(option)`时都支持
 
@@ -349,3 +365,21 @@ this.$message.top().closeButton('关闭').absolute().elevation(10).success('cust
 > 函数式配置具体都能配置哪些参数，可以去看官方文档该组件的参数：https://vuetifyjs.com/zh-Hans/components/snackbars/
 
 > 不过查看项目内的 TS 文件的话是最准确的
+
+##### 样式表现不一致的问题
+
+issue: https://github.com/thinkupp/vuetify-message-snackbar/issues/7
+
+- 普通web项目传入vuetify实例
+
+- Nuxt项目传入配置项或者在created时动态设置
+
+```js
+import { setInstance } from "vuetify-message-snackbar"
+
+export default {
+	created() {
+		setVuetifyInstance(this.$root.$options.vuetify);
+	}
+}
+```

@@ -1,4 +1,5 @@
 import Vue, { VNode, PluginFunction } from "vue";
+import Vuetify, { VuetifyPreset } from "vuetify";
 
 export interface MessageOption {
   // 给组件应用 position: absolute
@@ -108,15 +109,12 @@ export interface MessageOption {
 
   // 消息与消息之间的间隔
   offsetTop?: number;
-  
+
   // 自定义类名
   class?: string | string[];
 
   // 是否自动设置过渡动画
   autoTransitionSetting?: boolean;
-
-  // 传递vuetify参数
-  options?: any;
 }
 
 export interface PresetIcon {
@@ -128,9 +126,13 @@ export interface InitOption extends MessageOption {
   appendTo?: string | Element;
   // 预设icon
   presetIcon?: PresetIcon;
+  // vuetify实例
+  vuetifyInstance?: Vuetify;
+  // vuetify 实例参数
+  vuetifyPreset?: VuetifyPreset;
 }
 
-export type CustomParameter = 'message' | 'autoRemove' | 'closeButtonContent' | 'appendTo' | 'offsetTop' | 'class' | 'autoTransitionSetting' | 'options';
+export type CustomParameter = 'message' | 'autoRemove' | 'closeButtonContent' | 'appendTo' | 'offsetTop' | 'class' | 'autoTransitionSetting';
 
 export type MessageType = string | VNode;
 interface BaseMessage {
@@ -263,3 +265,5 @@ export default NuxtMessageInit;
 declare const NuxtMessageInit: NuxtMessageInit;
 
 export const Notify: message;
+
+export const setVuetifyInstance: (instance: Vuetify) => boolean;

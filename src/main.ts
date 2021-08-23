@@ -12,3 +12,5 @@ function init(Vue: VueConstructor, globalOptions?: types.InitOption): void {
 export default {
   install: init
 };
+
+export { setVuetifyInstance } from "./util";

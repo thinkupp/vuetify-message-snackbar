@@ -1,7 +1,7 @@
 import * as types from "./message";
 
 import { VNode } from "vue";
-import Vuetify from "vuetify";
+import Vuetify, { VuetifyPreset } from "vuetify";
 
 const presetIcon: {
   [key: string]: string;
@@ -123,7 +123,22 @@ export function getMessageIcon(color?: string, icon?: string | VNode, customPres
 }
 
 let vuetifyInstance: Vuetify;
-export function getVuetifyInstance(vuetifyPreset: any) {
+export function getVuetifyInstance(instance?: Vuetify, preset?: VuetifyPreset) {
   if (vuetifyInstance) return vuetifyInstance;
-  return vuetifyInstance = new Vuetify(vuetifyPreset);
+
+  if (instance) {
+    return vuetifyInstance = instance
+  }
+
+  console.log("preset", preset);
+  return vuetifyInstance = new Vuetify(preset || {});
+}
+
+export function setVuetifyInstance(instance: Vuetify) {
+  if (!instance || !instance.constructor || instance.constructor.name !== "Vuetify") {
+    console.warn("[vuetify-message-snackbar]: invalid vuetify instance");
+    return false;
+  }
+  vuetifyInstance = instance;
+  return true;
 }

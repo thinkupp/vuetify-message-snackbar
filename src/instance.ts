@@ -16,7 +16,7 @@ function createComponent(
       };
     },
 
-    vuetify: getVuetifyInstance(messageConfig.options),
+    vuetify: getVuetifyInstance(),
     methods: {
       close(isCloseAll?: boolean) {
         this.value = false;
