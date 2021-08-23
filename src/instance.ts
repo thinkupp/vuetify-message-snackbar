@@ -17,8 +17,7 @@ function createComponent(
       };
     },
 
-    vuetify: new Vuetify(),
-
+    vuetify: new Vuetify(messageConfig.options),
     methods: {
       close(isCloseAll?: boolean) {
         this.value = false;
@@ -159,7 +158,6 @@ export default function createInstance(
   presetIcon?: types.PresetIcon
 ) {
   const instance = new (createComponent(messageConfig, presetIcon))();
-
   const mqm = new MessageQueueManager(instance, appendTo);
   instance.$on("closed", function() {
     mqm.destroy();
