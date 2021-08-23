@@ -1,50 +1,51 @@
 {
-  "name": "vuetify-message-snackbar",
-  "version": "0.2.5",
-  "description": "函数式使用 vuetify-snackbar，使用Typescript，链式调用增强体验",
-  "main": "dist/vuetify-message-snackbar.js",
-  "repository": "https://github.com/thinkupp/vuetify-message-snackbar.git",
-  "author": "thinkupp <thexwant@gmail.com>",
-  "types": "src/message.d.ts",
-  "license": "MIT",
-  "keywords": [
-    "vuetify-message",
-    "vuetify-snackbar",
-    "vuetify-message-snackbar",
-    "vuetify",
-    "vuetify-notify"
-  ],
-  "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --hot --port 3060",
-    "build": "NODE_ENV=production webpack",
-    "build:t": "NODE_ENV=development webpack"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^4.2.2",
-    "deepmerge": "^4.2.2",
-    "fibers": "^5.0.0",
-    "html-webpack-plugin": "^4.3.0",
-    "sass": "^1.26.10",
-    "sass-loader": "^10.0.1",
-    "scss-loader": "^0.0.1",
-    "style-loader": "^1.2.1",
-    "ts-loader": "^8.0.3",
-    "typescript": "^4.0.2",
-    "vue": "^2.6.12",
-    "vue-class-component": "^7.2.5",
-    "vue-loader": "^15.9.3",
-    "vue-property-decorator": "^9.0.0",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.12",
-    "vuetify": "^2.3.10",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
-  },
-  "peerDependencies": {
-    "vue": "*",
-    "vuetify": "*"
-  }
+    "name": "vuetify-message-snackbar",
+    "version": "0.2.6",
+    "description": "函数式使用 vuetify-snackbar，使用Typescript，链式调用增强体验",
+    "main": "dist/vuetify-message-snackbar.js",
+    "repository": "https://github.com/thinkupp/vuetify-message-snackbar.git",
+    "author": "thinkupp <thexwant@gmail.com>",
+    "types": "src/message.d.ts",
+    "license": "MIT",
+    "keywords": [
+        "vuetify-message",
+        "vuetify-snackbar",
+        "vuetify-message-snackbar",
+        "vuetify",
+        "vuetify-notify"
+    ],
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --port 3060",
+        "build": "cross-env NODE_ENV=production webpack",
+        "build:t": "NODE_ENV=development webpack"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "babel-loader": "^8.1.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^4.2.2",
+        "deepmerge": "^4.2.2",
+        "fibers": "^5.0.0",
+        "html-webpack-plugin": "^4.3.0",
+        "sass": "^1.26.10",
+        "sass-loader": "^10.0.1",
+        "scss-loader": "^0.0.1",
+        "style-loader": "^1.2.1",
+        "ts-loader": "^8.0.3",
+        "typescript": "^4.0.2",
+        "vue": "^2.6.12",
+        "vue-class-component": "^7.2.5",
+        "vue-loader": "^15.9.3",
+        "vue-property-decorator": "^9.0.0",
+        "vue-style-loader": "^4.1.2",
+        "vue-template-compiler": "^2.6.12",
+        "vuetify": "^2.3.10",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    },
+    "peerDependencies": {
+        "vue": "*",
+        "vuetify": "*"
+    }
 }
