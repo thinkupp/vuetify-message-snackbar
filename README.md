@@ -375,7 +375,7 @@ issue: https://github.com/thinkupp/vuetify-message-snackbar/issues/7
 - Nuxt项目传入配置项或者在created时动态设置
 
 ```js
-import { setInstance } from "vuetify-message-snackbar"
+import { setVuetifyInstance } from "vuetify-message-snackbar"
 
 export default {
 	created() {
