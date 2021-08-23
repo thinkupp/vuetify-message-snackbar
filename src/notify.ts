@@ -80,7 +80,6 @@ export default () => {
 export const setGlobalOptions = (options: types.InitOption) => {
   globalOptions = options;
   getVuetifyInstance(options.vuetifyInstance, options.vuetifyPreset);
-  console.log("UseOptions", options);
   setMessagePrototype();
 };
 

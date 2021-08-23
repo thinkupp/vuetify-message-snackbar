@@ -130,7 +130,6 @@ export function getVuetifyInstance(instance?: Vuetify, preset?: VuetifyPreset) {
     return vuetifyInstance = instance
   }
 
-  console.log("preset", preset);
   return vuetifyInstance = new Vuetify(preset || {});
 }
 
