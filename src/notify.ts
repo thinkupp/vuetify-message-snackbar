@@ -14,6 +14,7 @@ const messageTypes: types.methodType[] = [
   "info",
   "warning",
   "error",
+  "loading",
   "show",
 ];
 
@@ -28,7 +29,6 @@ export default () => {
       appendCss();
       cssAppendFlag = true;
     }
-
     if (type) {
       if (!messageTypes.includes(type) || type === "show") {
         type = void 0;
@@ -36,6 +36,9 @@ export default () => {
     }
 
     const messageConfig = getMessageConfig();
+    if (type){
+        messageConfig.type = type
+    }
     const instance = createInstance(
       messageConfig,
       globalOptions!.appendTo,
@@ -71,7 +74,6 @@ export default () => {
     message[type] = (option: types.MessageOption | types.MessageType) =>
       message(option, type);
   });
-
   message.closeAll = MessageQueueManager.closeAll;
 
   return message;

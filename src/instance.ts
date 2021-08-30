@@ -15,8 +15,12 @@ function createComponent(
         isCloseAll: false,
       };
     },
-
     vuetify: getVuetifyInstance(),
+    computed:{
+      isLoading(){
+        return messageConfig.type==='loading'
+      }
+    },
     methods: {
       close(isCloseAll?: boolean) {
         this.value = false;
@@ -39,22 +43,35 @@ function createComponent(
         if (isVNode(message)) {
           return [message];
         }
-
         const { color, messageIcon } = messageConfig;
         let icon = getMessageIcon(color, messageIcon, presetIcon);
         if (icon) {
           if (!isVNode(icon)) {
             icon = createElement(
-              "v-icon",
+                "v-icon",
               {
                 props: {
-                  left: true,
+                  left: true
                 },
               },
               [icon]
             );
           }
 
+          return [icon, message];
+        } else if (this.isLoading){
+          icon = createElement(
+              'v-progress-circular',
+              {
+                props:{
+                  indeterminate: true,
+                  width: 2,
+                  size: 21,
+                },
+                class: 'mr-3'
+              },
+              [icon]
+          );
           return [icon, message];
         }
 
@@ -129,12 +146,13 @@ function createComponent(
     render(createElement: CreateElement) {
       // 在这里调用this会导致类型推断错误，所以any
       const self = this as any;
-
+        const props=componentProps(messageConfig)
       return createElement(
         "v-snackbar",
         {
           props: {
-            ...componentProps(messageConfig),
+            ...props,
+            color: self.isLoading ? 'info': props.color,
             value: self.value,
           },
           on: {

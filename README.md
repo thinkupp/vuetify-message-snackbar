@@ -113,6 +113,7 @@ plugins: [
 - `v-snackbar`
 - `v-icon`
 - `v-btn`
+- `v-progress-circular`
 
 参考下方示例代码：
 
@@ -124,6 +125,7 @@ Vue.use(Vuetify);
 Vue.component("v-snackbar", VSnackbar);
 Vue.component("v-btn", VBtn);
 Vue.component("v-icon", VIcon);
+Vue.component("v-progress-circular", VIcon);
 ```
 
 ### 使用
