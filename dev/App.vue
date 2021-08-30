@@ -7,6 +7,8 @@
       <v-btn @click="$message.warning('这是一条警告消息')">warning</v-btn>
       <v-btn @click="$message.error('这是一条错误消息')">error</v-btn>
       <v-btn @click="$message.show('这是一条默认消息')">show</v-btn>
+      <v-btn @click="$message.loading('这是一条Loading消息')">loading</v-btn>
+      <v-btn @click="$message.timeout(1000).loading('这是一条Loading消息')">链式调用loading</v-btn>
 
       <v-subheader>在JS/TS文件中使用</v-subheader>
       <v-btn @click="useInJs">在JS/TS文件中使用</v-btn>
@@ -36,7 +38,7 @@
 
       <v-subheader>关闭按钮相关</v-subheader>
       <v-btn @click="$message.bottomRight().closeButtonContent('A_A').timeout(-1).info('设置关闭按钮文案')">设置关闭按钮文本</v-btn>
-      
+
       <v-subheader>VNode</v-subheader>
       <v-btn @click="handleVNodeMessage">Message使用VNode</v-btn>
       <v-btn @click="handleVNodeCloaseButton">关闭按钮使用VNode</v-btn>

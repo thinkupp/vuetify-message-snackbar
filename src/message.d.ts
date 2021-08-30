@@ -115,6 +115,9 @@ export interface MessageOption {
 
   // 是否自动设置过渡动画
   autoTransitionSetting?: boolean;
+
+  //类型
+  type?: string | "success" | "info" | "warning" | "error" | "loading" | "show";
 }
 
 export interface PresetIcon {
@@ -144,6 +147,8 @@ interface BaseMessage {
   warning(option: MessageOption): MessageReturnValue;
   error(message: MessageType): MessageReturnValue;
   error(option: MessageOption): MessageReturnValue;
+  loading(message: MessageType): MessageReturnValue;
+  loading(option: MessageOption): MessageReturnValue;
   show(message: MessageType): MessageReturnValue;
   show(option: MessageOption): MessageReturnValue;
 }
@@ -230,7 +235,7 @@ export interface message extends BaseMessage, MessageOptionHandle {
   closeAll(): void;
 }
 
-export type methodType = "success" | "error" | "warning" | "info" | "show";
+export type methodType = "success" | "error" | "warning" | "info" | "loading" | "show";
 
 export type MessagePosition =
   | "top"

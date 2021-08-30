@@ -10,7 +10,7 @@ Vue.use(Message, {
   appendTo: '.v-application--wrap',
   presetIcon: {
     success: "mdi-close-circle"
-  }
+  },
 });
 
 new Vue({

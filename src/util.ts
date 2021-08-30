@@ -25,6 +25,8 @@ export class DefaultMessageOption implements types.MessageOption {
   closeButtonContent: string = "";
   // 间距
   offsetTop: number = 10;
+  //类型
+  type: string = 'info';
 }
 
 export function componentProps(props: types.InitOption) {
